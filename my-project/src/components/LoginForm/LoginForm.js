@@ -3,11 +3,13 @@ import './LoginForm.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
 import { useFormik } from 'formik';
+import { useNavigate } from "react-router-dom";
 
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const [isShown, setIsShown] = useState(false);
-    const eye = (event) => {
+    const toggleEye = (event) => {
         event.preventDefault();
         if (!isShown) {
             setIsShown(true);
@@ -15,20 +17,24 @@ const LoginForm = () => {
             setIsShown(false);
         }
     }
+
+
     const formik = useFormik({
         initialValues: {
           login: '',
           password: '',
         },
         onSubmit: values => {
-            console.log(values);
             const url = `https://640c844094ce1239b0af21e9.mockapi.io/api/users?login=${values.login}&password=${values.password}`;
-            const user = fetch(url)
+              fetch(url)
                 .then(response => response.json())
                 .then(user => {
                     console.log(user);
                     console.log(user[0].jwt)
+                    if (user.length === 1)  {
                     localStorage.setItem("JWT" , user[0].jwt);
+                    navigate('/');
+                    } 
                 })
         },
       });
@@ -55,7 +61,7 @@ const LoginForm = () => {
             placeholder="Password"
             className="loginInput"
           />
-          <i onClick={eye}>
+          <i onClick={toggleEye}>
             {isShown ? <IoEye /> : <IoEyeOff />}
           </i>
         </div>
