@@ -1,5 +1,6 @@
 import React from "react";
 import { IoTrash, IoPencil } from "react-icons/io5";
+import './Table.css'
 
 const Table = ({ data, setActive, setProduct, setModalType }) => {
 
@@ -17,14 +18,14 @@ const Table = ({ data, setActive, setProduct, setModalType }) => {
 
 
     return (
-        <table>
+        <table className="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Cathegory</th>
+                    <th>Category</th>
                     <th>Name</th>
                     <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Price(₴)</th>
                     <th></th>
                 </tr>
             </thead>

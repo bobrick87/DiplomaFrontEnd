@@ -1,0 +1,25 @@
+.title {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #FFFFFF;
+    margin: 20px auto;
+}
+
+.products_buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.products_icon {
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 5px;
+}
+
+.products_icon svg {
+    vertical-align: top;
+}
+

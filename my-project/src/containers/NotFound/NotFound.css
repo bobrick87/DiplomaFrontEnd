@@ -6,7 +6,7 @@ html, body{
     /* background-color: #E7FFFF; */
   }
   
-  h1, a{
+  .error, .back-home{
     margin: 0;
     padding: 0;
     text-decoration: none;

@@ -8,7 +8,7 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
 
     return (
         <div>
-            <h1>{(modalType === 'edit') ? 'Edit product' : 'Add product'}</h1>
+            <h1 className="modal_title">{(modalType === 'edit') ? 'Edit product' : 'Add product'}</h1>
             <Formik
                 initialValues={{
                     category: product.category,
@@ -46,24 +46,34 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
                 }}
             >
                 <Form className='product_form'>
-                    <label htmlFor="category">Category</label>
-                    <Field id="category" name="category" />
+                    <div className="input_container">
+                        <label htmlFor="category"className="modal_label">Category</label>
+                        <Field id="category" name="category" className='text_green modal_input' />
+                    </div>
 
-                    <label htmlFor="name">Name</label>
-                    <Field id="name" name="name" />
+                    <div className="input_container">
+                        <label htmlFor="name" className="modal_label">Name</label>
+                        <Field id="name" name="name" className='text_green modal_input'/>
+                    </div>
 
-                    <label htmlFor="quantity">Quantity</label>
-                    <Field id="quantity" name="quantity" type="number" />
+                    <div className="input_container">
+                        <label htmlFor="quantity" className="modal_label">Quantity</label>
+                        <Field id="quantity" name="quantity" type="number" className='text_green modal_input'/>
+                    </div>
 
-                    <label htmlFor="price">Price</label>
-                    <Field id="price" name="price" type="number" />
+                    <div className="input_container">
+                        <label htmlFor="price" className="modal_label">Price</label>
+                        <Field id="price" name="price" type="number" className='text_green modal_input'/>
+                    </div>
 
-                    <label htmlFor="description">Description</label>
-                    <Field id="description" name="description" type="textArea" />
+                    <div className="input_container">
+                        <label htmlFor="description" className="modal_label">Description</label>
+                        <Field id="description" name="description" type="textArea" className='text_green modal_textarea'/>
+                    </div>
                     
                     <div className='form_buttons'>
-                        <button type="submit">Submit</button>
-                        <button type="button" onClick={() => setModalActive(false)}>Cancel</button>
+                        <button type="button" className="modal_button cancel_button" onClick={() => setModalActive(false)}>Cancel</button>
+                        <button type="submit" className="modal_button submit_button">Submit</button>
                     </div>
                 </Form>
             </Formik>

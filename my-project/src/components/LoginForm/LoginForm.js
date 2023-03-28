@@ -61,7 +61,7 @@ const LoginForm = () => {
             placeholder="Password"
             className="loginInput"
           />
-          <i onClick={toggleEye}>
+          <i className="eye_icon" onClick={toggleEye}>
             {isShown ? <IoEye /> : <IoEyeOff />}
           </i>
         </div>

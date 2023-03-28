@@ -17,7 +17,25 @@
 }
 
 .modal_content {
-    padding: 20px;
     background-color: #D9D9D9;
+    width: 429px;
+    height: 532px;
+}
 
+.modal_content_delete {
+    width: 429px;
+    height: 146px;
+    background-color : #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.modal_delete_text {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    padding-bottom: 17px;
 }
