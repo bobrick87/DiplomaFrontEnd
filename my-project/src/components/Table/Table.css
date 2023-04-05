@@ -24,10 +24,10 @@ th {
     line-height: 19px;
 }
 
-span:hover {
+.icon:hover {
     cursor: pointer;
 }
 
-span {
+.icon {
     margin: 0 5px;
 }

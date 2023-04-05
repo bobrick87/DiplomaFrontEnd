@@ -6,6 +6,7 @@ import Login from './containers/Login/Login';
 import Products from './containers/Products/Products';
 import NotFound from "./containers/NotFound/NotFound";
 import Preview from "./containers/Preview/Preview";
+import ProductID from "./containers/ProductID/ProductID";
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ const AppRouter = () => {
       <Route element={<PrivateRouter />}>
         <Route path="/" element={<Products />} />
         <Route path="/preview" element={<Preview />}/>
+        <Route path="/products/:productId" element={<ProductID />}/>
       </Route>
       <Route path="*" element={<NotFound />}/>
       </Routes>

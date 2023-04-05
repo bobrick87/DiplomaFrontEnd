@@ -38,8 +38,8 @@ const Table = ({ data, setActive, setProduct, setModalType }) => {
                     <td>{dataItem.quantity}</td>
                     <td>{dataItem.price}</td>
                     <td>
-                        <span onClick={editItem}> <IoPencil /> </span> 
-                        <span onClick={deleteItem}> <IoTrash /> </span>
+                        <span className="icon" onClick={editItem}> <IoPencil /> </span> 
+                        <span className="icon" onClick={deleteItem}> <IoTrash /> </span>
                     </td>
 
                 </tr>
