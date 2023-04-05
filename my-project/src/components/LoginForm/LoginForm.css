@@ -13,7 +13,7 @@
     border: none;
 }
 
-i {
+.eye_icon {
     position: absolute;
     font-size: 30px;
     text-align: center;

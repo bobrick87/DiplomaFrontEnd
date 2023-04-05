@@ -1,0 +1,10 @@
+.cards_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#root {
+    background-color: #44B26F;
+}
