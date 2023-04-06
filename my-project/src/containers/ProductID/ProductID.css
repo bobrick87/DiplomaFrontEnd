@@ -47,7 +47,7 @@
 }
 
 .productId_side_container {
-    padding-left: 30px;
+    padding-left: 50px;
     text-align: left;
 }
 
@@ -77,4 +77,8 @@
 .productId_check_icon {
     position: relative;
     top: 5px;
+}
+
+.productId_description_container {
+    padding-top: 30px;
 }

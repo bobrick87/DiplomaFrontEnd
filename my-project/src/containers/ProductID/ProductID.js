@@ -5,6 +5,7 @@ import { BsPatchCheck } from "react-icons/bs";
 
 import './ProductID.css'
 import HeaderLogo from "../../components/HeaderLogo/HeaderLogo";
+import SliderImage from "../../components/SliderImage/SliderImage";
 import { API_URL } from '../../constants/constants';
 
 import { useParams } from "react-router-dom";
@@ -34,7 +35,7 @@ const ProductID = () => {
             <div className="productId_container">
                 <div className="productId_name">{product.name}</div>
                 <div className="productId_data">
-                    <div className="productId_image_container"><img className="productId_image" src={product.image} alt={product.name}/></div>
+                    <div className="productId_image_container"><SliderImage product={product}/></div>
                     <div className="productId_side_container">
                         <div className="productId_in_stock text_green"><BsPatchCheck className="productId_check_icon"/>     Є в наявності</div>
                         <div className="productId_price">{product.price}₴</div>

@@ -1,0 +1,8 @@
+.slick-track {
+    height: 268px;
+
+}
+
+.slick-next:before, .slick-prev:before {
+    color:  #44B26F!important; 
+}
