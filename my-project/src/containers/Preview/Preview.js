@@ -12,7 +12,6 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 const Preview = () => {
 
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState({});
 
     useEffect(() => {
         getProducts();

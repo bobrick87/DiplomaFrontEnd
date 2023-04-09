@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field} from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { API_URL } from "../../constants/constants";
 
 import './ProductForm.css'
@@ -11,14 +11,14 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
             <h1 className="modal_title">{(modalType === 'edit') ? 'Edit product' : 'Add product'}</h1>
             <Formik
                 initialValues={{
-                    category: product.category,
-                    name: product.name,
-                    quantity: product.quantity,
-                    price: product.price,
-                    description: product.description,
+                    category: product.category ?? '',
+                    name: product.name ?? '',
+                    quantity: product.quantity ?? '',
+                    price: product.price ?? '',
+                    description: product.description ?? '',
                 }}
                 enableReinitialize={true}
-                onSubmit={async (values) => { 
+                onSubmit={async (values, actions) => { 
                     if (modalType === 'edit') {
                         await fetch(`${API_URL}/products/${product.id}`, {
                         method: 'PUT',
@@ -29,6 +29,8 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
                         })
                         await setModalActive(false);
                         await getProducts();
+                        actions.resetForm();
+
                         
                         
                     } else if (modalType === 'add') {
@@ -42,6 +44,7 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
                         await setProduct({});
                         await setModalActive(false);
                         await getProducts();
+                        actions.resetForm();
                     }
                 }}
             >

@@ -82,3 +82,9 @@
 .productId_description_container {
     padding-top: 30px;
 }
+
+.back_icon {
+    height: 39px;
+    display: inline-block;
+    vertical-align: top;
+}
