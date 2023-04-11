@@ -6,23 +6,36 @@ export const getProducts = async () => {
     return data;
 }
 
-// export const changingData = async (modalType, product) => {
+// export const changingData = async (modalType, product, values, actions, setProducts, setModalActive) => {
     
 //     let method, url;
 
 //     switch (modalType) {
 //         case 'edit':
-//             method = 'PUT'
-//             url = `${API_URL}/products/${product.id}`
+//             method = 'PUT';
+//             url = `${API_URL}/products/${product.id}`;
 //             break;
 
 //         case 'add':
-//             method = 'POST'
+//             method = 'POST';
+//             url = `${API_URL}/products`;
 //             break;
 
 //         default:
-//             method = 'DELETE'
+//             method = 'DELETE';
+//             url = `${API_URL}/products/${product.id}`;
 //             break;
 //     }
+
+//     await fetch(url, {
+//         method: {method},
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(values)
+//         })
+//         await setModalActive(false);
+//         await getProducts().then(setProducts);
+//         actions.resetForm();
     
 // }
