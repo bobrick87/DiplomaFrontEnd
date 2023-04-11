@@ -32,10 +32,19 @@
     font-size: 15px;
 }
 
-.card_name{
+.card_name a{
     font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.card_name a:hover {
+    font-weight: bold;
+    color: #05BC52;
 }
 
 .card_icon {
     font-size: 28px;
 }
+

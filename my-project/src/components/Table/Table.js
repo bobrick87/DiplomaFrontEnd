@@ -1,5 +1,6 @@
 import React from "react";
 import { IoTrash, IoPencil } from "react-icons/io5";
+
 import './Table.css'
 
 const Table = ({ data, setActive, setProduct, setModalType }) => {
@@ -15,7 +16,7 @@ const Table = ({ data, setActive, setProduct, setModalType }) => {
         setModalType('delete');
         setActive(true);
     }
-
+    
 
     return (
         <table className="table">

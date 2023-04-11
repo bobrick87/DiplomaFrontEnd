@@ -8,6 +8,8 @@ import './Products.css'
 import Table from '../../components/Table/Table';
 import HeaderLogo from '../../components/HeaderLogo/HeaderLogo';
 import { API_URL } from '../../constants/constants';
+import { getProducts } from "../../utils";
+
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import ProductForm from '../../components/ProductForm/ProductForm';
 import Button from '../../components/Button/Button'
@@ -19,14 +21,8 @@ const Products = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        getProducts();
+        getProducts().then(setProducts);
     }, [])
-
-    const getProducts = async () => {
-        const response = await fetch(`${API_URL}/products/`);
-        const data = await response.json();
-        setProducts(data);
-    }
 
     const handleDelete = async (event) => {
         event.preventDefault();
@@ -35,9 +31,9 @@ const Products = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            })
-            await setModalActive(false);
-            await getProducts();
+        });
+        setModalActive(false);
+        getProducts().then(setProducts);
     }
 
     const handleAddProduct = () => {
@@ -45,7 +41,8 @@ const Products = () => {
         setProduct({});
         setModalActive(true);
     }
-    console.log(product)
+
+
     return (
         <div>
             <HeaderLogo />
@@ -54,7 +51,6 @@ const Products = () => {
                     <Button 
                         type='button' 
                         className='header_button text_green' 
-                        onClick 
                         value=<span className='button_value'><i className='products_icon'><IoPersonOutline/></i>Preview</span>
 
                     />
@@ -69,12 +65,12 @@ const Products = () => {
             </div>
             <h1 className='title'>Products</h1>
             <div className="container_product_table">
-                <Table data={products} setActive={setModalActive} setProduct={setProduct} setModalType={setModalType}/>
+                <Table data={products} setActive={setModalActive} setProduct={setProduct} setModalType={setModalType} />
             </div>
             <ModalWindow active={modalActive} setActive={setModalActive} modalType={modalType}>
                 {(modalType === 'delete') 
                     ?   <div className='modal_delete'>
-                            <div className='modal_delete_text'>
+                            <div className='modal_delete_text text_green'>
                                 Are you sure you want to delete this product?
                             </div>
                             <div className='modal_buttons'>
@@ -82,7 +78,7 @@ const Products = () => {
                                 <Button type='button' className='delete_button modal_button' value='Delete' onClick={handleDelete} />
                             </div>
                         </div>
-                    : <ProductForm product={product} modalType={modalType} setModalActive={setModalActive} getProducts={getProducts} setProduct={setProduct}/>     
+                    : <ProductForm product={product} modalType={modalType} setModalActive={setModalActive} getProducts={getProducts} setProduct={setProduct} setProducts={setProducts}/>     
                 }
                 
             </ModalWindow>

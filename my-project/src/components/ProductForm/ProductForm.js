@@ -4,7 +4,7 @@ import { API_URL } from "../../constants/constants";
 
 import './ProductForm.css'
 
-const ProductForm = ({ modalType, product, setProduct, setModalActive, getProducts }) => {
+const ProductForm = ({ modalType, product, setProduct, setModalActive, getProducts, setProducts }) => {
 
     return (
         <div>
@@ -28,7 +28,7 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
                         body: JSON.stringify(values)
                         })
                         await setModalActive(false);
-                        await getProducts();
+                        await getProducts().then(setProducts);
                         actions.resetForm();
 
                         
@@ -43,7 +43,7 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
                         })
                         await setProduct({});
                         await setModalActive(false);
-                        await getProducts();
+                        await getProducts().then(setProducts);
                         actions.resetForm();
                     }
                 }}

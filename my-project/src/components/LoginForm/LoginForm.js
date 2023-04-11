@@ -3,6 +3,8 @@ import './LoginForm.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
 import { Formik, Field, Form } from 'formik';
+import { API_URL } from '../../constants/constants';
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +28,7 @@ const LoginForm = () => {
           password: '',
         }}
         onSubmit={values => {
-              const url = `https://640c844094ce1239b0af21e9.mockapi.io/api/users?login=${values.login}&password=${values.password}`;
+              const url = `${API_URL}/users?login=${values.login}&password=${values.password}`;
                 fetch(url)
                   .then(response => response.json())
                   .then(user => {
@@ -40,7 +42,7 @@ const LoginForm = () => {
           }}
       >
         <Form>
-          <Field id="login" name="login" placeholder="Password" className="loginInput" />
+          <Field id="login" name="login" placeholder="Login" className="loginInput" />
 
           <div >
             <Field id="password" name="password" placeholder="Password" type={isShown ? "text" : "password"} className="loginInput" />
