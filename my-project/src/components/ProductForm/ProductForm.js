@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from 'formik';
-import { API_URL } from "../../constants/constants";
 
 import './ProductForm.css'
+import { changingData } from "../../utils";
 
 const ProductForm = ({ modalType, product, setProduct, setModalActive, getProducts, setProducts }) => {
 
@@ -19,33 +19,8 @@ const ProductForm = ({ modalType, product, setProduct, setModalActive, getProduc
                 }}
                 enableReinitialize={true}
                 onSubmit={async (values, actions) => { 
-                    if (modalType === 'edit') {
-                        await fetch(`${API_URL}/products/${product.id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(values)
-                        })
-                        await setModalActive(false);
-                        await getProducts().then(setProducts);
-                        actions.resetForm();
+                    changingData(modalType, product, setProducts, setModalActive, values, actions)
 
-                        
-                        
-                    } else if (modalType === 'add') {
-                        await fetch(`${API_URL}/products`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(values)
-                        })
-                        await setProduct({});
-                        await setModalActive(false);
-                        await getProducts().then(setProducts);
-                        actions.resetForm();
-                    }
                 }}
             >
                 <Form className='product_form'>

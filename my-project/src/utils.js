@@ -6,36 +6,39 @@ export const getProducts = async () => {
     return data;
 }
 
-// export const changingData = async (modalType, product, values, actions, setProducts, setModalActive) => {
+export const changingData = async (modalType, product, setProducts, setModalActive, values = {}, actions = {}) => {
     
-//     let method, url;
+    let method, url;
 
-//     switch (modalType) {
-//         case 'edit':
-//             method = 'PUT';
-//             url = `${API_URL}/products/${product.id}`;
-//             break;
+    switch (modalType) {
+        case 'edit':
+            method = 'PUT';
+            url = `${API_URL}/products/${product.id}`;
+            break;
 
-//         case 'add':
-//             method = 'POST';
-//             url = `${API_URL}/products`;
-//             break;
+        case 'add':
+            method = 'POST';
+            url = `${API_URL}/products`;
 
-//         default:
-//             method = 'DELETE';
-//             url = `${API_URL}/products/${product.id}`;
-//             break;
-//     }
+            break;
 
-//     await fetch(url, {
-//         method: {method},
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(values)
-//         })
-//         await setModalActive(false);
-//         await getProducts().then(setProducts);
-//         actions.resetForm();
+        default:
+            method = 'DELETE';
+            url = `${API_URL}/products/${product.id}`;
+            break;
+    }
+
+    await fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+        })
+        await setModalActive(false);
+        await getProducts().then(setProducts);
+        if (!method === 'DELETE') {
+            actions.resetForm();
+        }
     
-// }
+}

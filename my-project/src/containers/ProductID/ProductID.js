@@ -22,7 +22,6 @@ const ProductID = () => {
         const response = await fetch(`${API_URL}/products/${productId}`);
         const data = await response.json();
         setProduct(data);
-        console.log(data)
     }
 
     useEffect(() => {

@@ -7,8 +7,7 @@ import { IoPersonOutline, IoAddCircleOutline } from "react-icons/io5";
 import './Products.css'
 import Table from '../../components/Table/Table';
 import HeaderLogo from '../../components/HeaderLogo/HeaderLogo';
-import { API_URL } from '../../constants/constants';
-import { getProducts } from "../../utils";
+import { changingData, getProducts } from "../../utils";
 
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import ProductForm from '../../components/ProductForm/ProductForm';
@@ -26,14 +25,7 @@ const Products = () => {
 
     const handleDelete = async (event) => {
         event.preventDefault();
-        await fetch(`${API_URL}/products/${product.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-        setModalActive(false);
-        getProducts().then(setProducts);
+        changingData(modalType, product, setProducts, setModalActive);
     }
 
     const handleAddProduct = () => {
