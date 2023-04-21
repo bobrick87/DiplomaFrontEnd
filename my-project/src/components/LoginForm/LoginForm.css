@@ -13,7 +13,7 @@
     border: none;
 }
 
-i {
+.eye_icon {
     position: absolute;
     font-size: 30px;
     text-align: center;
@@ -21,6 +21,7 @@ i {
     left: 69%;
     color: #44B26F;
     margin: 20px 0;
+    cursor: pointer;
 }
 
 .loginButton {

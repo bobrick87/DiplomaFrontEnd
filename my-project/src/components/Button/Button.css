@@ -1,0 +1,40 @@
+.header_button {
+    width: 179px;
+    height: 52px;
+    margin: 20px 40px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.header_button:hover {
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+
+.modal_button {
+    width: 115px;
+    height: 33px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border: 1px solid grey;
+}
+
+.cancel_button {
+    background-color: #726969;
+}
+
+.submit_button {
+    background-color: #44B26F;
+}
+
+.delete_button {
+    background-color: #FB0000;
+}
+
+.modal_button:hover, .loginButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}

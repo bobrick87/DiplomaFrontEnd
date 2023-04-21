@@ -1,0 +1,11 @@
+.header_logo {
+    background-color: #44B26F;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header_logo_img {
+    width: 240px;
+    height: 40px;
+}

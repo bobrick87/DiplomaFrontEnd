@@ -2,12 +2,17 @@ import React from "react";
 import './LoginForm.css';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
-import { useFormik } from 'formik';
+import { Formik, Field, Form } from 'formik';
+import { API_URL } from '../../constants/constants';
+
+
+import { useNavigate } from "react-router-dom";
 
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const [isShown, setIsShown] = useState(false);
-    const eye = (event) => {
+    const toggleEye = (event) => {
         event.preventDefault();
         if (!isShown) {
             setIsShown(true);
@@ -15,53 +20,42 @@ const LoginForm = () => {
             setIsShown(false);
         }
     }
-    const formik = useFormik({
-        initialValues: {
+
+      return (
+      <Formik
+        initialValues={{
           login: '',
           password: '',
-        },
-        onSubmit: values => {
-            console.log(values);
-            const url = `https://640c844094ce1239b0af21e9.mockapi.io/api/users?login=${values.login}&password=${values.password}`;
-            const user = fetch(url)
-                .then(response => response.json())
-                .then(user => {
-                    console.log(user);
-                    console.log(user[0].jwt)
-                    localStorage.setItem("JWT" , user[0].jwt);
-                })
-        },
-      });
-      return (
-        <form onSubmit={formik.handleSubmit} className='loginForm'>
+        }}
+        onSubmit={values => {
+              const url = `${API_URL}/users?login=${values.login}&password=${values.password}`;
+                fetch(url)
+                  .then(response => response.json())
+                  .then(user => {
+                      console.log(user);
+                      console.log(user[0].jwt)
+                      if (user.length === 1)  {
+                      localStorage.setItem("JWT" , user[0].jwt);
+                      navigate('/');
+                      } 
+                  })
+          }}
+      >
+        <Form>
+          <Field id="login" name="login" placeholder="Login" className="loginInput" />
 
-          <input
-            id="login"
-            name="login"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.login}
-            placeholder="User name"
-            className="loginInput"
-          />
+          <div >
+            <Field id="password" name="password" placeholder="Password" type={isShown ? "text" : "password"} className="loginInput" />
+            <i className="eye_icon" onClick={toggleEye}>
+              {isShown ? <IoEye /> : <IoEyeOff />}
+            </i>
+          </div>
+          
+          <button type="submit" className="loginButton">Submit</button>
+        </Form>
+      </Formik>
 
-        <div >
-          <input
-            id="password"
-            name="password"
-            type={isShown ? "text" : "password"}
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            placeholder="Password"
-            className="loginInput"
-          />
-          <i onClick={eye}>
-            {isShown ? <IoEye /> : <IoEyeOff />}
-          </i>
-        </div>
 
-          <button type="submit" className="loginButton">Login</button>
-        </form>
       );
 }
 
